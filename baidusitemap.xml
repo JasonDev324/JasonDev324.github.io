@@ -4,6 +4,26 @@
 
     
   <url>
+    <loc>JasonDev324.github.io/2015/10/30/Android-Activity/</loc>
+    <lastmod>2022-05-14T17:08:37.686Z</lastmod>
+    <data>
+        <display>
+        <title>Android基础之Activity</title>
+        <pubTime>2015-10-30T07:42:08.000Z</pubTime>
+        
+        <tag>Android基础之Activity</tag>
+         
+         
+           
+             
+              <breadCrumb title="Android基础" url="JasonDev324.github.io/categories/Android%E5%9F%BA%E7%A1%80/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>JasonDev324.github.io/2016/02/29/AbnormalJson/</loc>
     <lastmod>2022-05-14T17:04:02.071Z</lastmod>
     <data>
@@ -106,26 +126,6 @@
            
              
               <breadCrumb title="自定义View" url="JasonDev324.github.io/categories/%E8%87%AA%E5%AE%9A%E4%B9%89View/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>JasonDev324.github.io/2015/10/30/Android-Activity/</loc>
-    <lastmod>2018-10-13T03:25:40.523Z</lastmod>
-    <data>
-        <display>
-        <title>Android基础之Activity</title>
-        <pubTime>2015-10-30T07:42:08.000Z</pubTime>
-        
-        <tag>Android基础之Activity</tag>
-         
-         
-           
-             
-              <breadCrumb title="Android基础" url="JasonDev324.github.io/categories/Android%E5%9F%BA%E7%A1%80/"/>
           
         </display>
     </data>
