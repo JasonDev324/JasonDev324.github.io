@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Android - File文件操作 | JasonDev324</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Java文件的基础知识
+理解 —— File是一个工具类,通过其对象来操作文件的增删改查
+
+
+1234567//File基本使用File file = new File(路径,文件名);//创建文件File file = new File(路径,文件名);//创建文件夹file.mkdirs();file.delete();//删除文件">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android - File文件操作">
+<meta property="og:url" content="JasonDev324.github.io/2016/05/05/Android-File/index.html">
+<meta property="og:site_name" content="JasonDev324">
+<meta property="og:description" content="Java文件的基础知识
+理解 —— File是一个工具类,通过其对象来操作文件的增删改查
+
+
+1234567//File基本使用File file = new File(路径,文件名);//创建文件File file = new File(路径,文件名);//创建文件夹file.mkdirs();file.delete();//删除文件">
+<meta property="og:image" content="http://imglf.nosdn.127.net/img/U05xRllGZk4zNU5tNkp1azg4dzNkd1dhaHQyM3RES2FxZHBQOTgyaDlVTWJ6eFZEejFKZkhnPT0.png?imageView&thumbnail=500x0&quality=96&stripmeta=0&type=jpg">
+<meta property="og:updated_time" content="2018-05-14T07:36:38.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Android - File文件操作">
+<meta name="twitter:description" content="Java文件的基础知识
+理解 —— File是一个工具类,通过其对象来操作文件的增删改查
+
+
+1234567//File基本使用File file = new File(路径,文件名);//创建文件File file = new File(路径,文件名);//创建文件夹file.mkdirs();file.delete();//删除文件">
+<meta name="twitter:image" content="http://imglf.nosdn.127.net/img/U05xRllGZk4zNU5tNkp1azg4dzNkd1dhaHQyM3RES2FxZHBQOTgyaDlVTWJ6eFZEejFKZkhnPT0.png?imageView&thumbnail=500x0&quality=96&stripmeta=0&type=jpg">
+  
+    <link rel="alternative" href="/atom.xml" title="JasonDev324" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/img/favicon.ico">
+  
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  
+  
+      <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  
+  <!-- 加载特效 -->
+    <script src="/js/pace.js"></script>
+    <link href="/css/pace/pace-theme-flash.css" rel="stylesheet" />
+  <script>
+      var yiliaConfig = {
+          fancybox: true,
+          animate: false,
+          isHome: false,
+          isPost: true,
+          isArchive: false,
+          isTag: false,
+          isCategory: false,
+          open_in_new: false
+      }
+  </script>
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+  (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+  e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+  
+  _st('install','LFp3mbq3aoaxwzxP9eby','2.0.0');
+</script>
+
+        <a href="/" class="profilepic">
+            
+            <img src="/img/lrving.jpg" class="js-avatar" style="width: 100%;height: 100%;opacity: 1;">
+            
+        </a>
+
+        <hgroup>
+          <h1 class="header-author"><a href="/">JasonDev324</a></h1>
+        </hgroup>
+
+        
+        
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/">HOME</a></li>
+                        
+                            <li><a href="/archives">ARCHIVES</a></li>
+                        
+                            <li><a href="/about">ABOUT</a></li>
+                        
+                            <li><a href="/tags">TAGs</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fl mail" target="_blank" href="mailto:TanJunDang@126.com" title="mail">mail</a>
+                            
+                                <a class="fl github" target="_blank" href="https://github.com/TanJunDang" title="github">github</a>
+                            
+                                <a class="fl twitter" target="_blank" href="http://twitter.com/TanJunDang" title="twitter">twitter</a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="http://stormzhang.com/">stormzhang</a>
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="http://kevinsu917.github.io/posts/">kevinsu917</a>
+                    
+                    </div>
+                </section>
+                
+
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">JasonDev324</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                
+                    <img src="/img/lrving.jpg" class="js-avatar" style="width: 100%; height: 100%; opacity: 1;">
+                
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="回到主页">JasonDev324</a></h1>
+            </hgroup>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/">HOME</a></li>
+                
+                    <li><a href="/archives">ARCHIVES</a></li>
+                
+                    <li><a href="/about">ABOUT</a></li>
+                
+                    <li><a href="/tags">TAGs</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                <div class="social">
+                    
+                        <a class="mail" target="_blank" href="mailto:TanJunDang@126.com" title="mail">mail</a>
+                    
+                        <a class="github" target="_blank" href="https://github.com/TanJunDang" title="github">github</a>
+                    
+                        <a class="twitter" target="_blank" href="http://twitter.com/TanJunDang" title="twitter">twitter</a>
+                    
+                </div>
+            </nav>
+        </header>                
+    </div>
+</nav>
+      <div class="body-wrap"><article id="post-Android-File" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/05/05/Android-File/" class="article-date">
+      <time datetime="2016-05-05T02:21:17.000Z" itemprop="datePublished">2016-05-05</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Android - File文件操作
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/Android基础/">Android基础</a>
+    </div>
+
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android-File文件操作/">Android - File文件操作</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h1 id="Java文件的基础知识"><a href="#Java文件的基础知识" class="headerlink" title="Java文件的基础知识"></a><font color="#e74c3c">Java文件的基础知识</font></h1><blockquote>
+<p>理解 —— File是一个工具类,通过其对象来操作文件的增删改查</p>
+</blockquote>
+<hr>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//File基本使用</span></span><br><span class="line">File file = <span class="keyword">new</span> File(路径,文件名);<span class="comment">//创建文件</span></span><br><span class="line"></span><br><span class="line">File file = <span class="keyword">new</span> File(路径,文件名);<span class="comment">//创建文件夹</span></span><br><span class="line">file.mkdirs();</span><br><span class="line"></span><br><span class="line">file.delete();<span class="comment">//删除文件</span></span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<h2 id="文件流的理解"><a href="#文件流的理解" class="headerlink" title="文件流的理解"></a><font color="#e74c3c">文件流的理解</font></h2><blockquote>
+<p>理解 —— 在程序中要操作文件(读写)，必须先将文件转换成流，然后从流中读取(写入)数据。</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>1.字符流(Reader、Writer) — 读取(写入)相关的字符(String)，不需要缓冲区。  </p>
+<p>2.字节流(InputStream、OutputStream) — 读取(写入)相关的字节,需要先将数据读入(写入)缓冲区，然后再将缓冲区读入(写入)流中。</p>
+</blockquote>
+<h3 id="示例-字符流跟字节流的区别"><a href="#示例-字符流跟字节流的区别" class="headerlink" title="示例 - 字符流跟字节流的区别"></a>示例 - 字符流跟字节流的区别</h3><ul>
+<li>示例： 对一个md文件写入Hello World语句</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">File file = <span class="keyword">new</span> File(<span class="string">"B:/Erintrus.md"</span>);</span><br><span class="line"><span class="keyword">if</span>(file.exists())&#123;</span><br><span class="line">println(<span class="string">"This file already exists"</span>);</span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">file.createNewFile();</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//上述代码创建一个md文件</span></span><br><span class="line"></span><br><span class="line">-------------------------------------------</span><br><span class="line"></span><br><span class="line">**********字符流*************</span><br><span class="line">FileWriter fw = <span class="keyword">new</span> FileWriter(file);</span><br><span class="line">String msg = <span class="string">"Hello World"</span>;<span class="comment">//需要写入的信息</span></span><br><span class="line">fw.write(msg);<span class="comment">//直接将数据写入字符流</span></span><br><span class="line"></span><br><span class="line">**********字节流*************</span><br><span class="line">FileOutputStream fos = <span class="keyword">new</span> FileOutputStream(file);</span><br><span class="line">String msg = <span class="string">"Hello World"</span>;</span><br><span class="line"><span class="keyword">byte</span>[] bytes = msg.getBytes();<span class="comment">//将数据写入缓冲区</span></span><br><span class="line">fos.write(bytes); <span class="comment">//将缓冲区写入字节流</span></span><br><span class="line"></span><br><span class="line">***********进阶 —— 高级流************</span><br><span class="line">BufferReader、BufferWriter</span><br></pre></td></tr></table></figure>
+<ul>
+<li>InputStream示例</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">************InputStream的缺陷，需要提前设置缓存区大小***************</span><br><span class="line">File file = <span class="keyword">new</span> File(<span class="string">"B:/Erintrus.md"</span>);</span><br><span class="line">FileInputStream fis = <span class="keyword">new</span> FileInputStream(file);</span><br><span class="line"><span class="keyword">byte</span>[] bytes = <span class="keyword">new</span> <span class="keyword">byte</span>[<span class="number">10240</span>]; <span class="comment">//文件过大，还是无法读取到完整的数据</span></span><br><span class="line">fis.read(bytes);</span><br><span class="line">String result = EncodingUtils.getString(bytes, <span class="string">"UTF-8"</span>);</span><br></pre></td></tr></table></figure>
+<ul>
+<li>推荐示例 —— BufferReader</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">***********FileReader跟BufferReader的结合使用********</span><br><span class="line">FileReader r = <span class="keyword">new</span> FileReader(file);</span><br><span class="line">BufferedReader br = <span class="keyword">new</span> BufferedReader(r);</span><br><span class="line"></span><br><span class="line">StringBuffer msg = <span class="keyword">new</span> StringBuffer();</span><br><span class="line">String s;</span><br><span class="line"><span class="keyword">while</span> ((s = br.readLine()) != <span class="keyword">null</span>) &#123;</span><br><span class="line">	msg = msg.append(s+“\n”); <span class="comment">//必须要加\n 否则全部数据变成一行</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>推荐示例 —— BufferWriter</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">*********FileWriter跟BufferWriter的结合使用</span><br><span class="line">FileWriter fw = <span class="keyword">new</span> FileWriter(decFile);</span><br><span class="line">BufferedWriter bw = <span class="keyword">new</span> BufferedWriter(fw); <span class="comment">//可以不用BufferWriter</span></span><br><span class="line">bw.write(msg.toString());</span><br><span class="line">bw.close();<span class="comment">//必须要关闭，不然写不了数据</span></span><br><span class="line">fw.close();必须要关闭，不然写不了数据</span><br></pre></td></tr></table></figure>
+<ul>
+<li>推荐示例 —— FileChanel与FileInputStream、FileOutputStream结合</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">FileInputStream fis = <span class="keyword">new</span> FileInputStream(file);</span><br><span class="line">FileOutputStream fos = <span class="keyword">new</span> FileOutputStream(desFile);</span><br><span class="line">FileChanel fcIn = <span class="keyword">new</span> FileChanel(fis); <span class="comment">//将输入流放到输入管道中</span></span><br><span class="line">FileChanel fcOut = <span class="keyword">new</span> FileChanel(fos);<span class="comment">//将输出流放到输出管道中</span></span><br><span class="line"></span><br><span class="line">******************输入管道调用transferTo()方法传输数据************</span><br><span class="line">fcIn.transferTo(<span class="number">0</span>,fcIn.size(),fcOut);</span><br><span class="line">.</span><br><span class="line">.</span><br><span class="line">.</span><br><span class="line">关闭流</span><br></pre></td></tr></table></figure>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><blockquote>
+<p>1.字符流比字节流简便。<br>2.不推荐使用FileInputStream、FileInputStream，要用就结合FileChannel来用。</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>3.创建一个文件的过程</p>
+<p>判断是否需要创建折叠器(文件夹)<br>1.不要 ——&gt; 直接创建文件<br>2.需要 ——&gt; 判断文件的目录是否存在 &amp;&amp; 判断是否文件夹 ——&gt; 如果不存在，则在该路径下创建文件</p>
+</blockquote>
+<p><img src="http://imglf.nosdn.127.net/img/U05xRllGZk4zNU5tNkp1azg4dzNkd1dhaHQyM3RES2FxZHBQOTgyaDlVTWJ6eFZEejFKZkhnPT0.png?imageView&amp;thumbnail=500x0&amp;quality=96&amp;stripmeta=0&amp;type=jpg" alt=""></p>
+<p><a href="http://blog.csdn.net/yeruby/article/details/21558577" target="_blank" rel="external">文件流的参考</a></p>
+<h1 id="Android中的文件操作"><a href="#Android中的文件操作" class="headerlink" title="Android中的文件操作"></a>Android中的文件操作</h1><h2 id="所需权限"><a href="#所需权限" class="headerlink" title="所需权限"></a>所需权限</h2><blockquote>
+<p>第一步就是添加权限,否则创建不了文件,并且不会提示。</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- 在SDCard中创建与删除文件权限 --&gt;</span><br><span class="line">&lt;uses-permission android:name=<span class="string">"android.permission.MOUNT_UNMOUNT_FILESYSTEMS"</span>/&gt;</span><br><span class="line">&lt;!-- 往SDCard写入数据权限 --&gt;</span><br><span class="line">&lt;uses-permission android:name=<span class="string">"android.permission.WRITE_EXTERNAL_STORAGE"</span>/&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="Android中常用的一些目录"><a href="#Android中常用的一些目录" class="headerlink" title="Android中常用的一些目录"></a>Android中常用的一些目录</h2><h3 id="API-Context"><a href="#API-Context" class="headerlink" title="API - Context"></a>API - Context</h3><blockquote>
+<p>getCacheDir() - 用于获取内部存储空间路径/data/data/包名/cache/<br>getFilesDir() - 用于获取内部存储空间路径/data/data/包名/files/</p>
+<p>openFileInput(String name) - 打开应用程序私有目录下的的指定私有文件以读入数据，返回一个FileInputStream 对象。</p>
+<p>openFileOutput(String name , int mode) - 打开应用程序私有目录下的的指定私有文件以写入数据，返回一个FileOutputStream对象。如果文件不存在就创建这个文件。路径跟getFilesDir一致。</p>
+<p>fileList() - 列出程序所有私有文件夹下的所有私有文件。</p>
+<p>deleteFile(String fileName) - 删除指定文件名的文件，成功返回true,失败返回false。</p>
+<p>getDir(String name , int mode);//创建一个目录，返回一个File对象。</p>
+<p>getExternalFilesDir(String name) - 用于获取外部存储空间名称为name的目录的路径(/storage/emulated/0/Android/data/package_name/Sam/)  有些设备的部分路径不是/storage/emulated/0而是/mnt/sdcard<br>卸载才会删除该目录的文件。</p>
+<p>MODE_PRIVATE 默认模式，文件只可以被调用该方法的应用程序访问<br>1.MODE_APPEND 如果文件已存在就向该文件的末尾继续写入数据，而不是覆盖原来的数据。<br>2.MODE_WORLD_READABLE 赋予所有的应用程序对该文件读的权限。<br>3.MODE_WORLD_WRITEABLE  赋予所有的应用程序对该文件写的权限。</p>
+</blockquote>
+<h3 id="API-Environment"><a href="#API-Environment" class="headerlink" title="API - Environment"></a>API - Environment</h3><blockquote>
+<p>getExternalStorageDirectory() - 获取Android根目录 storage/emulated/0</p>
+<p>getExternalStoragePublicDirectory(String type) - 获取Android系统中的某目录 /storage/emulated/0/xxxx 参数为Environment的常量</p>
+<p>getExternalStorageState() - 获取外部存储设备的当前状态</p>
+<p>getDataDirectory() - 获取Android的数据源目录 /data</p>
+<p>getRootDirectory() - 获取 Android 的根目录 /android</p>
+<p>Environment常量<br>1.DIRECTORY_DCIM - 系统的DCIM目录<br>2.DIRECTORY_DOWNLOADS - 系统的Downloads目录<br>3.DIRECTORY_ALARMS - 系统的目录Alarms目录<br>4.MEDIA_MOUNTED - SD卡插入且可读写<br>….</p>
+</blockquote>
+<h2 id="文件内外部存储"><a href="#文件内外部存储" class="headerlink" title="文件内外部存储"></a>文件内外部存储</h2><h3 id="Android内部存储（用户不可操作）"><a href="#Android内部存储（用户不可操作）" class="headerlink" title="Android内部存储（用户不可操作）"></a>Android内部存储（用户不可操作）</h3><blockquote>
+<p>文件只能被自己的应用访问,并且当应用被卸载时,数据也会被销毁。Shared Preferences和SQLite数据库都是存储在内部存储空间上的。所有应用程序的内部存储的私有文件都放在根目录的data/data/package_name/files/下.</p>
+</blockquote>
+<hr>
+<h4 id="内部储存实例"><a href="#内部储存实例" class="headerlink" title="内部储存实例"></a>内部储存实例</h4><blockquote>
+<p>将数据保存在内部存储私有文件里，然后再拿出来显示。</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">String data  = <span class="string">"Man should keep his words"</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">//将data写入到SamTam.md文件</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">write</span><span class="params">(View v)</span></span>&#123;</span><br><span class="line">FileOutputStream fos  =  openFileOutput(<span class="string">"SamTam.md"</span>,Context.MODE_PRIVATE);</span><br><span class="line">fos.write(data.getBytes());</span><br><span class="line">fos.close();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//将SamTam.md里的数据读取出来，显示在TextView里。</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">read</span><span class="params">(View v)</span></span>&#123;</span><br><span class="line">FileInputStream fis  = openFileInput(<span class="string">"SamTam.md"</span>);</span><br><span class="line"><span class="keyword">int</span> lenght = fis.available(); <span class="comment">//可读长度？</span></span><br><span class="line"><span class="keyword">byte</span>[] buffer = <span class="keyword">new</span> <span class="keyword">byte</span>[lenght];</span><br><span class="line">fis.read(buffer);</span><br><span class="line"><span class="comment">//将byte数组转换成指定格式的字符串</span></span><br><span class="line">String result = EncodingUtils.getString(buffer, <span class="string">"UTF-8"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="Android外部存储（用户可操作）"><a href="#Android外部存储（用户可操作）" class="headerlink" title="Android外部存储（用户可操作）"></a>Android外部存储（用户可操作）</h3><blockquote>
+<p>文件可以被其他应用访问,当应用被卸载时,数据不会被销毁。所有应用程序的外部存储的私有文件都放在根目录的Android/data/package_name/下，目录形式为/Android/data/package_name/</p>
+<p>Environment.getExternalStorageDirectory() - 获取根路径</p>
+</blockquote>
+<h4 id="外部储存实例"><a href="#外部储存实例" class="headerlink" title="外部储存实例"></a>外部储存实例</h4><blockquote>
+<p>将数据保存在外部存储私有文件里，然后再拿出来显示。</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">String data  = <span class="string">"Man should keep his words"</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">//将data写入到SamTam.md文件</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">write</span><span class="params">(View v)</span></span>&#123;</span><br><span class="line"> <span class="keyword">if</span> (Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)) &#123;</span><br><span class="line"><span class="comment">//判断SD卡是否存在</span></span><br><span class="line">..............</span><br><span class="line">&#125;</span><br><span class="line">File fileDir  =  getExternalFilesDir(<span class="string">"Sam"</span>); <span class="comment">//获取Sam目录的路径</span></span><br><span class="line">File file  =  <span class="keyword">new</span> File(fileDir , <span class="string">"Test.md"</span>); <span class="comment">//找sam目录下的Test.md文件</span></span><br><span class="line"></span><br><span class="line">上面两句可简写为</span><br><span class="line">String path = Environment.getExternalStorageDirectory().getCanonicalPath() + <span class="string">"/"</span> + <span class="string">"Test.md"</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span>(!file.exists())&#123;</span><br><span class="line">file.createNewFile();</span><br><span class="line">&#125;</span><br><span class="line">FileOutputStream fos  = <span class="keyword">new</span> FileOutputStream(file);</span><br><span class="line">fos.write(data.getBytes());</span><br><span class="line">fos.close();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//将SamTam.md里的数据读取出来，显示在TextView里。</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">read</span><span class="params">(View v)</span></span>&#123;</span><br><span class="line">File fileDir  =  getExternalFilesDir(<span class="string">"Sam"</span>); <span class="comment">//获取Sam目录的路径</span></span><br><span class="line">File file  =  <span class="keyword">new</span> File(fileDir , <span class="string">"Test.md"</span>); <span class="comment">//找sam目录下的Test.md文件</span></span><br><span class="line"></span><br><span class="line">FileInputStream fis  = <span class="keyword">new</span> FileInputStream(file);</span><br><span class="line"><span class="keyword">int</span> length = fis.avaliable();</span><br><span class="line"><span class="keyword">byte</span>[] buffer = <span class="keyword">new</span> <span class="keyword">byte</span>[length];</span><br><span class="line">fis.read(buffer);</span><br><span class="line">String result = EncodingUtils.getString(buffer, <span class="string">"UTF-8"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="总结-1"><a href="#总结-1" class="headerlink" title="总结"></a>总结</h2><blockquote>
+<p>数据写入文件的基本流程：(writeObject、ObjectOutputStream)<br>1.用File类确定文件夹的路径（进行必要的判断和创建）<br>2.用File类确定文件是否存在，存在则删除。<br>3.用ObjectOutputStream向文件写入数据</p>
+<p>读取数据的基本流程：(readObject、ObjectInputStream)<br>1.用File确定文件夹路径<br>2.用File确定文件<br>3.判断文件是否存在,用ObjectInputStream读取数据</p>
+</blockquote>
+<p><a href="http://www.androidchina.net/4106.html" target="_blank" rel="external">Android存储</a><br><a href="http://blog.csdn.net/zhaokaiqiang1992/article/details/43451931" target="_blank" rel="external">方法的存储位置</a></p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2016/05/05/Android-File/">Android - File文件操作</a></p>
+        <p><span>文章作者:</span><a href="/" title="访问 JasonDev324 的个人博客">JasonDev324</a></p>
+        <p><span>发布时间:</span>2016年05月05日 - 10时21分</p>
+        <p><span>最后更新:</span>2018年05月14日 - 15时36分</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2016/05/05/Android-File/" title="Android - File文件操作">http://JasonDev324.github.io/2016/05/05/Android-File/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://JasonDev324.github.io/2016/05/05/Android-File/　　作者: JasonDev324" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script src="/js/clipboard.min.js"></script>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+    </div>
+
+
+
+<nav id="article-nav">
+  
+    <a href="/2016/04/11/Handler/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          Handler机制
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/05/25/CustomMenu/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">自定义底部弹出菜单</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Java文件的基础知识"><span class="toc-number">1.</span> <span class="toc-text">Java文件的基础知识</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#文件流的理解"><span class="toc-number">1.1.</span> <span class="toc-text">文件流的理解</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#示例-字符流跟字节流的区别"><span class="toc-number">1.1.1.</span> <span class="toc-text">示例 - 字符流跟字节流的区别</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#总结"><span class="toc-number">1.2.</span> <span class="toc-text">总结</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Android中的文件操作"><span class="toc-number">2.</span> <span class="toc-text">Android中的文件操作</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#所需权限"><span class="toc-number">2.1.</span> <span class="toc-text">所需权限</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Android中常用的一些目录"><span class="toc-number">2.2.</span> <span class="toc-text">Android中常用的一些目录</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#API-Context"><span class="toc-number">2.2.1.</span> <span class="toc-text">API - Context</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#API-Environment"><span class="toc-number">2.2.2.</span> <span class="toc-text">API - Environment</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#文件内外部存储"><span class="toc-number">2.3.</span> <span class="toc-text">文件内外部存储</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Android内部存储（用户不可操作）"><span class="toc-number">2.3.1.</span> <span class="toc-text">Android内部存储（用户不可操作）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#内部储存实例"><span class="toc-number">2.3.1.1.</span> <span class="toc-text">内部储存实例</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Android外部存储（用户可操作）"><span class="toc-number">2.3.2.</span> <span class="toc-text">Android外部存储（用户可操作）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#外部储存实例"><span class="toc-number">2.3.2.1.</span> <span class="toc-text">外部储存实例</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#总结-1"><span class="toc-number">2.4.</span> <span class="toc-text">总结</span></a></li></ol></li></ol>
+</div>
+<input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+
+<script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script>
+    var valueHide = "隐藏目录";
+    var valueShow = "显示目录";
+
+    if ($(".left-col").is(":hidden")) {
+        $("#tocButton").attr("value", valueShow);
+    }
+    $("#tocButton").click(function() {
+        if ($("#toc").is(":hidden")) {
+            $("#tocButton").attr("value", valueHide);
+            $("#toc").slideDown(320);
+        }
+        else {
+            $("#tocButton").attr("value", valueShow);
+            $("#toc").slideUp(350);
+        }
+    })
+    if ($(".toc").length < 1) {
+        $("#toc, #tocButton").hide();
+    }
+</script>
+
+
+
+
+<div class="share">
+    <div class="bdsharebuttonbox">
+    <a href="#" class="bds_more" data-cmd="more"></a>
+    <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+    <a href="#" class="bds_sqq" data-cmd="sqq" title="分享给 QQ 好友"></a>
+    <a href="#" class="bds_copy" data-cmd="copy" title="复制网址"></a>
+    <a href="#" class="bds_mail" data-cmd="mail" title="通过邮件分享"></a>
+    <a href="#" class="bds_weixin" data-cmd="weixin" title="生成文章二维码"></a>
+    </div>
+    <script>
+        window._bd_share_config={
+            "common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+    </script>
+</div>
+
+
+
+
+    
+      <!-- ������City�氲װ���� -->
+<div id="lv-container" data-id="city" data-uid="MTAyMC8zNTEyMy8xMTY1OA==">
+<script type="text/javascript">
+   (function(d, s) {
+       var j, e = d.getElementsByTagName(s)[0];
+
+       if (typeof LivereTower === 'function') { return; }
+
+       j = d.createElement(s);
+       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+       j.async = true;
+
+       e.parentNode.insertBefore(j, e);
+   })(document, 'script');
+</script>
+<noscript>Ϊ����ʹ�����������۹����뼤��JavaScript</noscript>
+</div>
+<!-- City�氲װ��������� -->
+    
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/2016/04/11/Handler/" title="上一篇: Handler机制">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+        
+            <a href="/2016/05/25/CustomMenu/" title="下一篇: 自定义底部弹出菜单">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/04/18/GaoDeMap/">高德地图开发总结</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/01/17/Bitmap/">图片处理</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/31/RichText/">RichEditText实现富文本</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/17/Login/">LoginActivity登录流程</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/16/Project-Network/">Android框架设计 - 网络层</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/16/Retrofit/">Retrofit笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/09/Project-BaseApplication/">Android架构 - BaseApplication笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/06/Project-Architecture/">Android项目架构模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/04/DataBinding/">DataBinding的学习</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/20/Project-HttpProtocol/">Http业务基类的编写</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/18/SQLite/">SQLite数据库</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/13/LayoutInflater/">LayoutInflater的理解</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/05/ApkTool/">反编译</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/01/Interview/">面试、笔试题目</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/13/EditText/">EditText笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/13/TextView/">TextView学习笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/11/17/SearchView/">SearchView的学习笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/11/07/Offset/">Offset偏移量的理解</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/11/03/Camera/">Camera学习笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/10/24/Socket/">Socket学习笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/10/22/ScrollView/">ScrollView学习笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/10/15/WebView/">WebView学习笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/10/09/Android-Permission/">Android6.0权限</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/10/09/ViewPager/">ViewPager笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/09/14/ToolBar/">Toolbar笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/09/07/Preference/">Preference的使用</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/09/01/DialogFragment/">DialogFragment笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/08/29/DemoAnalysis/">项目源码分析</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/08/18/CustomView/">自定义View笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/08/17/RecyclerView/">RecyclerView的个人理解</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/08/16/ItemBean/">代码分析 - ItemBean</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/13/RegEx/">正则表达式的总结</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/08/Skills/">开发中常用的技巧</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/08/Timestamp/">时间戳</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/05/Share/">常用开发工具、框架、网站</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/13/RxAndroid/">RxJava、RxAndroid的理解</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/31/GsonTool/">工具类的编写 - Gson的封装</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/31/LogTool/">工具类的编写 - Log的封装</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/31/Project-CacheModel/">Android框架设计-APP缓存策略</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/25/CustomMenu/">自定义底部弹出菜单</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/05/Android-File/">Android - File文件操作</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/11/Handler/">Handler机制</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/06/CodeOptimize/">Android - 代码优化技巧</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/05/EventBus/">EventBus学习笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/04/ProGuard/">混淆</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/31/OnTouchEvent/">事件分发机制onTouchEvent笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/30/BNJSummarize/">BNJ项目学到的知识点</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/02/29/AbnormalJson/">不固定的Json返回字段</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/02/02/Gradle/">Gradle打包基础</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/02/01/DatePicker/">DatePicker笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/02/01/Widgets/">Android控件的学习笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/01/Animation/">Android动画</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/01/Style/">Android - Theme(Style)</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/11/18/JavaSE/">JavaSE基础</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/11/02/Project-Build/">Android项目发布到Coding</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/11/01/Android-ContentProvider/">Android基础之ContentProvider</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/11/01/Android-Service/">Android基础之Service</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/10/31/Android-Broadcast/">Android基础之BroadcastReceiver</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/10/30/Android-Activity/">Android基础之Activity</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/10/29/Volley/">Volley跟Async-http的封装</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/10/03/Notification/">Notification笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/10/02/VersionUpdate/">版本更新</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/10/01/Fragment/">Android-Fragment笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/09/30/Shape/">Shape、Selector、Inset</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/09/22/PopupWindow/">PopupWindow笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/09/20/Intent/">Android基础之Intent</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/09/17/Error-Bug/">开发中常见的Error、Bug</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/09/17/ImageLoaderTool/">ImageLoader的理解</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/09/11/DrawerLayout/">DrawerLayout的使用</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/09/08/Git/">Git的学习</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/09/01/ListView/">ListView的理解</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/09/01/Canvas/">Canvas笔记</a></li></ul>
+    <script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+    <script>
+        $(".post-list").addClass("toc-article");
+        $(".post-list-item a").attr("target","_blank");
+        $("#post-nav-button > a:nth-child(2)").click(function() {
+            $(".fa-bars, .fa-times").toggle();
+            $(".post-list").toggle(300);
+            if ($(".toc").length > 0) {
+                $("#toc, #tocButton").toggle(200, function() {
+                    if ($(".switch-area").is(":visible")) {
+                        $("#tocButton").attr("value", valueHide);
+                        }
+                    })
+            }
+            else {
+            }
+        })
+    </script>
+
+
+
+    <script>
+        
+    </script>
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                &copy; 2022 JasonDev324
+            </div>
+		<!--
+      <div class="footer-right">
+          <a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/luuman/hexo-theme-spfk" target="_blank">spfk</a> by luuman
+      </div>
+		-->
+
+        </div>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style='display:none'>
+                        <span id="site-visit" >访问人数: 
+                            <span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                    <span>, </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style='display:none'>
+                        <span id="page-visit">本页阅读量: 
+                            <span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+                
+            </div>
+        
+    </div>
+</footer>
+
+    </div>
+    <script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var backgroundnum = 5;
+            var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+            $("#mobile-nav").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
+            $(".left-col").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
+        })
+    </script>
+
+
+
+
+
+<div class="scroll" id="scroll">
+    <a href="#"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    $(document).ready(function() {
+        if ($("#comments").length < 1) {
+            $("#scroll > a:nth-child(2)").hide();
+        };
+    })
+</script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+
+  <script language="javascript">
+    $(function() {
+        $("a[title]").each(function() {
+            var a = $(this);
+            var title = a.attr('title');
+            if (title == undefined || title == "") return;
+            a.data('title', title).removeAttr('title').hover(
+
+            function() {
+                var offset = a.offset();
+                $("<div id=\"anchortitlecontainer\"></div>").appendTo($("body")).html(title).css({
+                    top: offset.top - a.outerHeight() - 15,
+                    left: offset.left + a.outerWidth()/2 + 1
+                }).fadeIn(function() {
+                    var pop = $(this);
+                    setTimeout(function() {
+                        pop.remove();
+                    }, pop.text().length * 800);
+                });
+            }, function() {
+                $("#anchortitlecontainer").remove();
+            });
+        });
+    });
+</script>
+
+
+
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+  </div>
+</body>
+</html>
